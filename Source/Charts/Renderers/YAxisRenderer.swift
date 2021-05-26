@@ -330,6 +330,7 @@ open class YAxisRenderer: AxisRendererBase
             if l.lineDashLengths != nil
             {
                 context.setLineDash(phase: l.lineDashPhase, lengths: l.lineDashLengths!)
+                context.setLineCap(.round)
             }
             else
             {
