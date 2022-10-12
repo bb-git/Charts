@@ -41,7 +41,6 @@ public enum ChartEasingOption: Int
     case easeOutElastic
     case easeInOutElastic
     case easeInBack
-    case easeOutBack
     case easeInOutBack
     case easeInBounce
     case easeOutBounce
@@ -106,8 +105,6 @@ internal func easingFunctionFromOption(_ easing: ChartEasingOption) -> ChartEasi
         return EasingFunctions.EaseInOutElastic
     case .easeInBack:
         return EasingFunctions.EaseInBack
-    case .easeOutBack:
-        return EasingFunctions.EaseOutBack
     case .easeInOutBack:
         return EasingFunctions.EaseInOutBack
     case .easeInBounce:
@@ -336,14 +333,7 @@ internal struct EasingFunctions
         var position: TimeInterval = elapsed / duration
         return Double( position * position * ((s + 1.0) * position - s) )
     }
-    
-    internal static let EaseOutBack = { (elapsed: TimeInterval, duration: TimeInterval) -> Double in
-        let s: TimeInterval = 1.70158
-        var position: TimeInterval = elapsed / duration
-        position -= 1.0
-        return Double( position * position * ((s + 1.0) * position + s) + 1.0 )
-    }
-    
+      
     internal static let EaseInOutBack = { (elapsed: TimeInterval, duration: TimeInterval) -> Double in
         var s: TimeInterval = 1.70158
         var position: TimeInterval = elapsed / (duration / 2.0)
